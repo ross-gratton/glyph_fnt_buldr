@@ -1,0 +1,16 @@
+{
+    "font_name": "example",
+    "env":{
+        "source": { 
+            "base": "../source/",
+            "sass": "sass/",
+            "fonts": "fonts/",
+            "icons": "icons/"
+        },
+        "build": {
+            "base": "../build/",
+            "css": "css/",
+            "fonts": "fonts/"
+        }
+    }
+}

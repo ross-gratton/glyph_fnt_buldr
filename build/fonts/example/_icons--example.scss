@@ -1,0 +1,133 @@
+/*//////////////////////////////////////////////////////////////////////////////
+|| Font Declaration
+//////////////////////////////////////////////////////////////////////////////*/
+@font-face {
+	font-family: "example";
+	src: url('../fonts/example/example.eot');
+	src: url('../fonts/example/example.eot?#iefix') format('eot'),
+		url('../fonts/example/example.woff') format('woff'),
+		url('../fonts/example/example.ttf') format('truetype'),
+		url('../fonts/example/example.svg#example') format('svg');
+}
+
+/*//////////////////////////////////////////////////////////////////////////////
+|| Mixins / Placeholders / Functions
+//////////////////////////////////////////////////////////////////////////////*/
+@mixin icon-styles {
+	font-family: "example";
+		-webkit-font-smoothing: antialiased;
+		-moz-osx-font-smoothing: grayscale;
+	font-style: normal;
+	font-variant: normal;
+	font-weight: normal;
+	// speak: none; // only necessary if not using the private unicode range (firstGlyph option)
+	text-decoration: none;
+	text-transform: none;
+}
+
+%icon {
+	@include icon-styles;
+}
+
+@function icon-char($filename) {
+	$char: "";
+
+	@if $filename == bookmark {
+		$char: "\E001";
+	}
+	@if $filename == checkbox--off {
+		$char: "\E002";
+	}
+	@if $filename == checkbox--on {
+		$char: "\E003";
+	}
+	@if $filename == chevron--back {
+		$char: "\E004";
+	}
+	@if $filename == cog {
+		$char: "\E005";
+	}
+	@if $filename == cross--thin {
+		$char: "\E006";
+	}
+	@if $filename == documents {
+		$char: "\E007";
+	}
+	@if $filename == info-bubble {
+		$char: "\E008";
+	}
+	@if $filename == info-circle {
+		$char: "\E009";
+	}
+	@if $filename == plus--circle {
+		$char: "\E00A";
+	}
+	@if $filename == products {
+		$char: "\E00B";
+	}
+	@if $filename == promo {
+		$char: "\E00C";
+	}
+	@if $filename == settings {
+		$char: "\E00D";
+	}
+	@if $filename == warranty {
+		$char: "\E00E";
+	}
+
+	@return $char;
+}
+
+@mixin icon($filename, $insert: before, $extend: true) {
+	&:#{$insert} {
+		@if $extend {
+			@extend %icon;
+		} @else {
+			@include icon-styles;
+		}
+		content: icon-char($filename);
+	}
+}
+
+.example-icon--bookmark {
+	@include icon(bookmark);
+}
+.example-icon--checkbox--off {
+	@include icon(checkbox--off);
+}
+.example-icon--checkbox--on {
+	@include icon(checkbox--on);
+}
+.example-icon--chevron--back {
+	@include icon(chevron--back);
+}
+.example-icon--cog {
+	@include icon(cog);
+}
+.example-icon--cross--thin {
+	@include icon(cross--thin);
+}
+.example-icon--documents {
+	@include icon(documents);
+}
+.example-icon--info-bubble {
+	@include icon(info-bubble);
+}
+.example-icon--info-circle {
+	@include icon(info-circle);
+}
+.example-icon--plus--circle {
+	@include icon(plus--circle);
+}
+.example-icon--products {
+	@include icon(products);
+}
+.example-icon--promo {
+	@include icon(promo);
+}
+.example-icon--settings {
+	@include icon(settings);
+}
+.example-icon--warranty {
+	@include icon(warranty);
+}
